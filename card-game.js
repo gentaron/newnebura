@@ -17,7 +17,7 @@ const CARD_DATABASE = [
         cost: 3,
         ability: '次元操作: 相手の盾を2減少させる',
         description: 'E528年の現在も活動を続けるAURALIS第二代総合プロデューサー。青き長身の才女。',
-        image: 'images/mina.png',
+        image: 'images/Mina Eureka Ernst.png',
         era: 'E522-'
     },
     {
@@ -31,7 +31,7 @@ const CARD_DATABASE = [
         cost: 5,
         ability: 'Pink Voltage: 攻撃力+3 但し自身にも2ダメージ',
         description: 'Pink Voltageの異名を持つ最強戦士。凍眠保存から復活し今も戦う。',
-        image: 'images/layla.png',
+        image: 'images/Layla Virel Nova.png',
         era: 'E325-'
     },
     {
@@ -45,7 +45,7 @@ const CARD_DATABASE = [
         cost: 2,
         ability: '大地の安定: 味方に盾+2',
         description: '「大地の豊かさ・安定」を体現する。第二代。AURALISの基盤担当。',
-        image: 'images/kate.png',
+        image: 'images/Kate Patton.png',
         era: 'E514-'
     },
     {
@@ -59,7 +59,7 @@ const CARD_DATABASE = [
         cost: 2,
         ability: '情熱増幅: 次の味方の攻撃を2倍にする',
         description: '「情熱的で大胆」な芸術家。第二代。感情増幅担当。',
-        image: 'images/lillie.png',
+        image: 'images/Lillie Ardent.png',
         era: 'E514-'
     },
     {
@@ -73,7 +73,7 @@ const CARD_DATABASE = [
         cost: 2,
         ability: '爆発活力: 召喚時、ランダムな味方を+2',
         description: '無邪気で爆発的な活力を持つ。Gigapolisに再帰還した存在。',
-        image: 'images/ninny.png',
+        image: 'images/Ninny Offenbach.png',
         era: 'E514-'
     },
 
