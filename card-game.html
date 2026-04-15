@@ -3,224 +3,202 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E16カードバトラー - ミナと銀河の命运</title>
+    <title>E16カードバトラー - ターン制カードゲーム</title>
     <link rel="stylesheet" href="card-game.css">
 </head>
 <body>
-    <div class="game-container">
+    <div class="game-wrapper">
+        <!-- ヘッダー -->
         <header class="game-header">
-            <h1>⚔️ E16 カードバトラー</h1>
-            <div class="header-stats">
-                <div class="stat">E暦 <span id="current-era">E528</span></div>
-                <div class="stat">💰 <span id="player-gold">1000</span></div>
-                <button class="theme-btn" onclick="toggleTheme()">🌙</button>
+            <h1>⚔️ E16カードバトラー</h1>
+            <div class="header-info">
+                <span class="era-badge">E528</span>
+                <span class="gold-display">💰 <span id="gold">1000</span></span>
             </div>
         </header>
 
-        <main class="game-main">
-            <section id="menu-screen" class="screen active">
-                <div class="menu-content">
-                    <div class="game-logo">
-                        <span class="logo-sub">AURALIS PRESENTS</span>
-                        <h2>E16 カードバトラー</h2>
-                        <p class="tagline">光と音を永遠にする — Where Light and Sound Become Eternal</p>
-                    </div>
-                    <div class="menu-buttons">
-                        <button class="menu-btn primary" onclick="startGame()">🎮 ゲームスタート</button>
-                        <button class="menu-btn" onclick="showDeckBuilder()">📋 デッキビルダー</button>
-                        <button class="menu-btn" onclick="showCardCollection()">🃏 カード一覧</button>
-                        <button class="menu-btn" onclick="showLore()">📖 世界観</button>
-                    </div>
-                    <div class="featured-cards">
-                        <h3>🌟 AURALIS メンバー</h3>
-                        <div class="card-showcase">
-                            <div class="showcase-card" data-card="mina">
-                                <div class="card-inner">
-                                    <img src="images/Mina Eureka Ernst.png" alt="Mina" class="card-img" onerror="this.style.display='none'">
-                                    <div class="card-name">ミナ</div>
-                                    <div class="card-type">AURALIS / strategy</div>
-                                </div>
-                            </div>
-                            <div class="showcase-card" data-card="layla">
-                                <div class="card-inner">
-                                    <img src="images/Layla Virel Nova.png" alt="Layla" class="card-img" onerror="this.style.display='none'">
-                                    <div class="card-name">レイラ</div>
-                                    <div class="card-type">Pink Voltage</div>
-                                </div>
-                            </div>
-                            <div class="showcase-card" data-card="ninny">
-                                <div class="card-inner">
-                                    <img src="images/Ninny Offenbach.png" alt="Ninny" class="card-img" onerror="this.style.display='none'">
-                                    <div class="card-name">ニニー</div>
-                                    <div class="card-type">AURALIS / speed</div>
-                                </div>
-                            </div>
-                            <div class="showcase-card" data-card="kate">
-                                <div class="card-inner">
-                                    <img src="images/Kate Patton.png" alt="Kate" class="card-img" onerror="this.style.display='none'">
-                                    <div class="card-name">ケイト</div>
-                                    <div class="card-type">AURALIS / support</div>
-                                </div>
-                            </div>
-                            <div class="showcase-card" data-card="lillie">
-                                <div class="card-inner">
-                                    <img src="images/Lillie Ardent.png" alt="Lillie" class="card-img" onerror="this.style.display='none'">
-                                    <div class="card-name">リリー</div>
-                                    <div class="card-type">AURALIS / art</div>
-                                </div>
-                            </div>
+        <!-- メニュー画面 -->
+        <div id="menu-screen" class="screen active">
+            <div class="menu-container">
+                <div class="logo-section">
+                    <div class="auralis-logo">🎵</div>
+                    <h2>AURALIS PRESENTS</h2>
+                    <h1>E16カードバトラー</h1>
+                    <p class="tagline">光と音を永遠にする</p>
+                </div>
+                
+                <div class="menu-buttons">
+                    <button class="big-btn start-btn" onclick="startGame()">
+                        <span class="btn-icon">🎮</span>
+                        <span class="btn-text">ゲームスタート</span>
+                    </button>
+                    <button class="big-btn deck-btn" onclick="showDeckBuilder()">
+                        <span class="btn-icon">📋</span>
+                        <span class="btn-text">デッキ選択</span>
+                    </button>
+                    <button class="big-btn collection-btn" onclick="showCollection()">
+                        <span class="btn-icon">🃏</span>
+                        <span class="btn-text">カード一覧</span>
+                    </button>
+                </div>
+
+                <!-- カード紹介 -->
+                <div class="card-intro">
+                    <h3>🌟 登場キャラクター</h3>
+                    <div class="intro-cards">
+                        <div class="intro-card" onclick="showCardInfo('mina')">
+                            <img src="images/Mina Eureka Ernst.png" alt="Mina">
+                            <span>ミナ</span>
                         </div>
-                        <h3 style="margin-top: 30px;">🃏 カードタイプ</h3>
-                        <div class="card-type-legend">
-                            <span class="type-badge character">👤 キャラクター</span>
-                            <span class="type-badge booster">⚡ ブースター</span>
-                            <span class="type-badge trap">🪤 トラップ</span>
-                            <span class="type-badge status">💫 状態異常</span>
+                        <div class="intro-card" onclick="showCardInfo('layla')">
+                            <img src="images/Layla Virel Nova.png" alt="Layla">
+                            <span>レイラ</span>
+                        </div>
+                        <div class="intro-card" onclick="showCardInfo('ninny')">
+                            <img src="images/Ninny Offenbach.png" alt="Ninny">
+                            <span>ニニー</span>
+                        </div>
+                        <div class="intro-card" onclick="showCardInfo('kate')">
+                            <img src="images/Kate Patton.png" alt="Kate">
+                            <span>ケイト</span>
+                        </div>
+                        <div class="intro-card" onclick="showCardInfo('lillie')">
+                            <img src="images/Lillie Ardent.png" alt="Lillie">
+                            <span>リリー</span>
                         </div>
                     </div>
                 </div>
-            </section>
-
-            <section id="game-screen" class="screen">
-                <div class="battle-field">
-                    <div class="opponent-area">
-                        <div class="player-info opponent">
-                            <div class="avatar opponent-avatar"></div>
-                            <div class="player-details">
-                                <div class="player-name">🤖 AI対戦相手</div>
-                                <div class="health-bar">
-                                    <div class="health-fill opponent-health" id="opponent-health"></div>
-                                    <span class="health-text" id="opponent-hp">30/30</span>
-                                </div>
-                                <div class="shield-bar">
-                                    <span>🛡️ _shield:</span>
-                                    <span id="opponent-shield">0</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="opponent-hand" id="opponent-hand"></div>
-                        <div class="opponent-field" id="opponent-field"></div>
-                    </div>
-
-                    <div class="center-field">
-                        <div class="turn-indicator" id="turn-indicator">あなたのターン</div>
-                        <div class="battle-log" id="battle-log"></div>
-                        <div class="action-buttons">
-                            <button class="action-btn attack" onclick="endTurn()">⚔️ ターン終了</button>
-                            <button class="action-btn special" onclick="useSpecial()">✨ 必殺技</button>
-                        </div>
-                    </div>
-
-                    <div class="player-area">
-                        <div class="player-field" id="player-field"></div>
-                        <div class="player-hand" id="player-hand"></div>
-                        <div class="player-info">
-                            <div class="avatar player-avatar"></div>
-                            <div class="player-details">
-                                <div class="player-name">あなた</div>
-                                <div class="health-bar">
-                                    <div class="health-fill player-health" id="player-health"></div>
-                                    <span class="health-text" id="player-hp">30/30</span>
-                                </div>
-                                <div class="shield-bar">
-                                    <span>🛡️ _shield:</span>
-                                    <span id="player-shield">0</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <button class="back-btn" onclick="returnToMenu()">← メニューに戻る</button>
-            </section>
-
-            <section id="deck-screen" class="screen">
-                <div class="deck-content">
-                    <h2>📋 デッキビルダー</h2>
-                    <div class="deck-builder">
-                        <div class="deck-list">
-                            <h3>現在のデッキ (<span id="deck-count">0</span>/20)</h3>
-                            <div id="current-deck" class="deck-cards"></div>
-                        </div>
-                        <div class="card-pool">
-                            <h3>カードプール</h3>
-                            <div class="filter-tabs">
-                                <button class="filter-btn active" data-filter="all">全て</button>
-                                <button class="filter-btn" data-filter="auralis">AURALIS</button>
-                                <button class="filter-btn" data-filter="gigapolis">Gigapolis</button>
-                                <button class="filter-btn" data-filter="trinity">トリニティ</button>
-                                <button class="filter-btn" data-filter="v7">V7</button>
-                            </div>
-                            <div id="available-cards" class="pool-cards"></div>
-                        </div>
-                    </div>
-                    <button class="back-btn" onclick="returnToMenu()">← 戻る</button>
-                </div>
-            </section>
-
-            <section id="collection-screen" class="screen">
-                <div class="collection-content">
-                    <h2>🃏 カードコレクション</h2>
-                    <div class="collection-stats">
-                        <span>所持: <span id="owned-count">0</span>/<span id="total-count">0</span></span>
-                    </div>
-                    <div id="all-cards" class="collection-grid"></div>
-                    <button class="back-btn" onclick="returnToMenu()">← 戻る</button>
-                </div>
-            </section>
-
-            <section id="lore-screen" class="screen">
-                <div class="lore-content">
-                    <h2>📖 E16星系の世界観</h2>
-                    <div class="lore-sections">
-                        <div class="lore-card" onclick="showLoreDetail('intro')">
-                            <h3>🌌 E16星系とは</h3>
-                            <p>M104銀河ハロー領域に位置する二重連星系。地球からの大移民(E0年)により植民化された。</p>
-                        </div>
-                        <div class="lore-card" onclick="showLoreDetail('auralis')">
-                            <h3>🎵 AURALIS</h3>
-                            <p>「光と音を永遠にする」芸術 коллектив。E528年の今も活動を続ける伝説のグループ。</p>
-                        </div>
-                        <div class="lore-card" onclick="showLoreDetail('gigapolis')">
-                            <h3>🏙️ ギガポリス</h3>
-                            <p>ジュラメット川流域に広がる超巨大都市。6地区で構成され、GDP14京ドルを誇る。</p>
-                        </div>
-                        <div class="lore-card" onclick="showLoreDetail('crescent')">
-                            <h3>🌙 クレセント大地方</h3>
-                            <p>東大陸の三日月型地形。ヴァーミリオン、クロセヴィアなど7カ国が加盟。</p>
-                        </div>
-                    </div>
-                    <div class="lore-detail" id="lore-detail"></div>
-                    <button class="back-btn" onclick="returnToMenu()">← 戻る</button>
-                </div>
-            </section>
-        </main>
-    </div>
-
-    <div class="card-modal" id="card-modal">
-        <div class="modal-content">
-            <span class="modal-close" onclick="closeCardModal()">×</span>
-            <div id="modal-card-content"></div>
-        </div>
-    </div>
-
-    <div class="victory-screen" id="victory-screen">
-        <div class="victory-content">
-            <h2>🏆 勝利!</h2>
-            <p id="victory-message">おめでとうございます！</p>
-            <div class="reward">
-                <span>💰 +500 報酬</span>
             </div>
-            <button class="menu-btn primary" onclick="startGame()">もう一度プレイ</button>
-            <button class="menu-btn" onclick="returnToMenu()">メニューに戻る</button>
         </div>
-    </div>
 
-    <div class="defeat-screen" id="defeat-screen">
-        <div class="defeat-content">
-            <h2>💀 敗北...</h2>
-            <p id="defeat-message">次の機会に...</p>
-            <button class="menu-btn primary" onclick="startGame()">もう一度プレイ</button>
-            <button class="menu-btn" onclick="returnToMenu()">メニューに戻る</button>
+        <!-- ゲーム画面 -->
+        <div id="game-screen" class="screen">
+            <div class="battle-container">
+                <!-- 相手情報 -->
+                <div class="player-section opponent-section">
+                    <div class="player-panel">
+                        <div class="player-avatar enemy-avatar">🤖</div>
+                        <div class="player-stats">
+                            <div class="player-name">AI対戦相手</div>
+                            <div class="hp-container">
+                                <div class="hp-bar">
+                                    <div class="hp-fill enemy-hp" id="enemy-hp-bar"></div>
+                                </div>
+                                <span class="hp-text" id="enemy-hp">30/30</span>
+                            </div>
+                            <div class="shield-display">🛡️ 盾: <span id="enemy-shield">0</span></div>
+                        </div>
+                    </div>
+                    <div class="field-area enemy-field" id="enemy-field">
+                        <div class="field-label">相手フィールド</div>
+                    </div>
+                    <div class="hand-area enemy-hand" id="enemy-hand">
+                        <div class="hidden-card">🂠</div>
+                        <div class="hidden-card">🂠</div>
+                        <div class="hidden-card">🂠</div>
+                    </div>
+                </div>
+
+                <!-- センター -->
+                <div class="center-section">
+                    <div class="turn-indicator" id="turn-indicator">あなたのターン</div>
+                    <div class="phase-indicator" id="phase-indicator">カードを選んで場に置いてください</div>
+                    <div class="action-buttons">
+                        <button class="action-btn attack-btn" id="attack-btn" onclick="executeAttack()" disabled>
+                            ⚔️ 攻撃
+                        </button>
+                        <button class="action-btn end-btn" onclick="endTurn()">
+                            🔄 ターン終了
+                        </button>
+                    </div>
+                    <div class="battle-log" id="battle-log"></div>
+                </div>
+
+                <!-- プレイヤー情報 -->
+                <div class="player-section player-section-bottom">
+                    <div class="hand-area player-hand" id="player-hand"></div>
+                    <div class="field-area player-field" id="player-field">
+                        <div class="field-label">あなたのフィールド</div>
+                    </div>
+                    <div class="player-panel">
+                        <div class="player-avatar player-avatar-icon">👤</div>
+                        <div class="player-stats">
+                            <div class="player-name">あなた</div>
+                            <div class="hp-container">
+                                <div class="hp-bar">
+                                    <div class="hp-fill player-hp" id="player-hp-bar"></div>
+                                </div>
+                                <span class="hp-text" id="player-hp">30/30</span>
+                            </div>
+                            <div class="shield-display">🛡️ 盾: <span id="player-shield">0</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="back-to-menu" onclick="backToMenu()">← メニューに戻る</button>
+        </div>
+
+        <!-- デッキ選択画面 -->
+        <div id="deck-screen" class="screen">
+            <div class="deck-container">
+                <h2>📋 デッキ選択</h2>
+                <div class="deck-list">
+                    <div class="deck-option selected" onclick="selectDeck('default')">
+                        <div class="deck-name"> 기본デッキ</div>
+                        <div class="deck-desc">キャラクター12枚 + ブースター5枚 + トラップ4枚 + 状態異常4枚</div>
+                    </div>
+                </div>
+                <button class="big-btn" onclick="startGame()">このデッキで開始</button>
+                <button class="back-btn" onclick="backToMenu()">← 戻る</button>
+            </div>
+        </div>
+
+        <!-- カード一覧画面 -->
+        <div id="collection-screen" class="screen">
+            <div class="collection-container">
+                <h2>🃏 カード一覧 (<span id="card-count">0</span>枚)</h2>
+                <div class="filter-bar">
+                    <button class="filter-btn active" onclick="filterCards('all')">全て</button>
+                    <button class="filter-btn" onclick="filterCards('character')">👤 キャラ</button>
+                    <button class="filter-btn" onclick="filterCards('booster')">⚡ ブースター</button>
+                    <button class="filter-btn" onclick="filterCards('trap')">🪤 トラップ</button>
+                    <button class="filter-btn" onclick="filterCards('status')">💫 状態</button>
+                </div>
+                <div class="card-grid" id="card-grid"></div>
+                <button class="back-btn" onclick="backToMenu()">← 戻る</button>
+            </div>
+        </div>
+
+        <!-- カード詳細モーダル -->
+        <div class="modal" id="card-modal">
+            <div class="modal-content card-detail">
+                <button class="modal-close" onclick="closeModal()">×</button>
+                <div id="modal-content"></div>
+            </div>
+        </div>
+
+        <!-- 勝利画面 -->
+        <div class="modal" id="victory-modal">
+            <div class="modal-content result-modal victory">
+                <div class="result-icon">🏆</div>
+                <h2>勝利！</h2>
+                <p id="victory-text">おめでとうございます！</p>
+                <div class="reward">💰 +500 獲得</div>
+                <button class="big-btn" onclick="startGame()">もう一度</button>
+                <button class="back-btn" onclick="backToMenu()">メニューに戻る</button>
+            </div>
+        </div>
+
+        <!-- 敗北画面 -->
+        <div class="modal" id="defeat-modal">
+            <div class="modal-content result-modal defeat">
+                <div class="result-icon">💀</div>
+                <h2>敗北...</h2>
+                <p id="defeat-text">下次有机会...</p>
+                <button class="big-btn" onclick="startGame()">もう一度</button>
+                <button class="back-btn" onclick="backToMenu()">メニューに戻る</button>
+            </div>
         </div>
     </div>
 
