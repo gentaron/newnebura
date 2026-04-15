@@ -191,11 +191,71 @@ body {
     transition: transform 0.5s;
     border: 2px solid var(--primary);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .showcase-card:hover .card-inner {
     transform: translateY(-10px) rotateY(5deg);
     box-shadow: 0 20px 40px rgba(74, 144, 255, 0.4);
+}
+
+.card-img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    background: rgba(0,0,0,0.3);
+}
+
+.showcase-card .card-name {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.showcase-card .card-type {
+    font-size: 0.75rem;
+    color: var(--secondary);
+}
+
+/* カードタイプ凡例 */
+.card-type-legend {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.type-badge {
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.type-badge.character {
+    background: rgba(74, 144, 255, 0.3);
+    border: 2px solid var(--primary);
+}
+
+.type-badge.booster {
+    background: rgba(255, 215, 0, 0.3);
+    border: 2px solid var(--gold);
+    color: var(--gold);
+}
+
+.type-badge.trap {
+    background: rgba(255, 71, 87, 0.3);
+    border: 2px solid var(--health);
+}
+
+.type-badge.status {
+    background: rgba(159, 77, 255, 0.3);
+    border: 2px solid #9f4dff;
 }
 
 .card-image {
@@ -410,6 +470,79 @@ body {
 
 .hand-card .card-art {
     font-size: 1.8rem;
+}
+
+/* カードタイプ別スタイル */
+.card-type-character .card-header {
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+}
+
+.card-type-booster .card-header {
+    background: linear-gradient(45deg, #ffd700, #ffa500);
+    color: #1a1a3a;
+}
+
+.card-type-booster {
+    border-color: var(--gold);
+}
+
+.card-type-trap .card-header {
+    background: linear-gradient(45deg, #ff4757, #ff6b81);
+}
+
+.card-type-trap {
+    border-color: var(--health);
+}
+
+.card-type-status .card-header {
+    background: linear-gradient(45deg, #9f4dff, #7b2cbf);
+}
+
+.card-type-status {
+    border-color: #9f4dff;
+}
+
+/* カード効果テキスト */
+.card-effect {
+    font-size: 0.5rem;
+    padding: 2px 4px;
+    color: var(--text);
+    text-align: center;
+    line-height: 1.2;
+    overflow: hidden;
+}
+
+.hand-card .card-effect {
+    display: none;
+}
+
+/* カード画像 */
+.card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-emoji-fallback {
+    font-size: inherit;
+}
+
+/* モーダル画像 */
+.modal-image {
+    width: 100%;
+    max-height: 200px;
+    object-fit: contain;
+    background: rgba(0,0,0,0.3);
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+.modal-art {
+    height: 200px;
+}
+
+.modal-emoji {
+    font-size: 4rem;
 }
 
 /* センター */
